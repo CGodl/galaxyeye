@@ -23,10 +23,10 @@ This page will be comprised of a homepage which compares number of upcoming laun
 This page will organize upcoming launches by rocket family. Users will be able to pull up information on a specific rocket family by clicking on the appropriate name in the lefthand nav bar.
 
 ## Architecture
-Launch Library API - See https://launchlibrary.net/
-Javascript
-CSS/SCSS
-D3
+* Launch Library API - See https://launchlibrary.net/
+* Javascript
+* CSS/SCSS
+* D3
 
 ## Implementation Timeline
 
