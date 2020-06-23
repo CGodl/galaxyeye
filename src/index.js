@@ -7,20 +7,20 @@ const rocketCard = (array) => {
     
     return `<li class='rocket-card'>
       <h2>${indiv.rocketName}</h2>
-      <p>${indiv.launchDate}</p>
+      <p> Launch Date: ${indiv.launchDate}</p>
       <img src="${indiv.rocketPhoto}" />
     </li>
     `
   })
     document
       .getElementById('appTest')
-      .innerHTML = cardReturn
+      .innerHTML = cardReturn.join('')
 }
 
 
 const rocketCollection = () => {
   let rocketArr = [];
-  fetch('https://launchlibrary.net/1.4/launch/next/7')
+  fetch('https://launchlibrary.net/1.4/launch/next/8')
     .then(response => response.json())
     .then(array => array.launches.forEach(indiv => (
       rocketArr.push({rocketName: indiv.name, 
