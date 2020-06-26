@@ -16,7 +16,11 @@
   },
   "author": "CGodl",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.3",
+    "@babel/runtime": "^7.10.3",
+    "d3": "^5.16.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
@@ -37,5 +41,12 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2",
     "webpack-merge": "^4.2.2"
-  }
+  },
+  "plugins": [
+    ["@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ]
+  ]
 }
