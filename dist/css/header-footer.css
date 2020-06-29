@@ -3,10 +3,9 @@
   display: sticky;
   top: 0;
   border-bottom: 1px solid white;
-
 }
 
-.sticky-header ul{
+.sticky-header ul {
   color: white;
   height: 100%;
   display: flex;
@@ -14,20 +13,16 @@
   justify-content: space-evenly;
   align-items: center;
   background-color: black;
-
-
 }
 
 .org-data-type {
   display: flex;
   justify-content: space-evenly;
-
 }
 
 .org-data-type li {
   margin-right: 35px;
   margin-left: 35px;
-
 }
 
 

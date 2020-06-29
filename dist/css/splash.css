@@ -1,16 +1,15 @@
-
 .main-title {
-
   font-family: 'Orbitron', sans-serif;
   text-align: center;
   color: white;
-  margin-top: 25%;
+  margin-top: 20%;
   margin-bottom: 35%;
-  text-shadow: 1px 1px #C6C6C6;
 }
+
 
 .galaxyeye-title {
   font-size: 60px;
   margin-bottom: 15px;
   letter-spacing: 10px;
+  text-shadow: 1px 1px #C6C6C6;
 }
