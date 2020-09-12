@@ -38,7 +38,7 @@ module: {
             }
         },
         "css-loader",
-        "postcss-loader"
+        "postcss-loader",
         ]
     },
     {
