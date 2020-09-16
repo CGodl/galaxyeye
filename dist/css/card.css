@@ -13,6 +13,7 @@
   background-color: #C6C6C6;
   border-radius: 5px;
   margin: 4px;
+  z-index: 5;
 }
 
 .rocket-card h2 {
@@ -20,6 +21,10 @@
   font-size: 20px;
   margin-bottom: 3px;
 
+}
+
+#testMe {
+  color: red;
 }
 
 .rocket-card img{
