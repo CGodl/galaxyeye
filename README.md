@@ -28,23 +28,3 @@ This page will organize upcoming launches by rocket family. Users will be able t
 * CSS/SCSS
 * D3
 
-## Implementation Timeline
-
-### Monday 22/06/20
-Implement Launch Library API to pull data on upcoming launch events
-
-### Tuesday 23/06/20
-Implement charting of data related to launch events
-
-### Wednesday 24/06/20
-Continue working on implementation of data related to launch events
-
-### Thursday 25/06/20
-Work on styling for website
-
-### Friday 26/06/20
-Finish styling of Data
-
-## Bonus
-Include historical launches.
-Include animation tracking launch timeline
