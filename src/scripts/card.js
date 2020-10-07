@@ -35,7 +35,7 @@ const rocketCard = (array) => {
     return `<li class='rocket-card'>
       <img src="${indiv.rocketPhoto}" />
       <h2>${indiv.rocketName}</h2>
-      <p>Time to launch: ${(countDown(indiv.launchDate).minutes)} <p>
+  
       <p> Launch Date: ${indiv.launchDate}</p>
       <p>Launch Location: ${indiv.location} </p>
       <p>Upcoming Mission Description:</p>
