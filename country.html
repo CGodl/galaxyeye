@@ -41,24 +41,19 @@
     <div id='stars-4'></div>
   </section>
 
-  <div id='my_dataviz'></div>
+  <div id='lollipopChart'></div>
 
 
   <script>
 
 let margin = {top: 10, right: 30, bottom: 90, left: 40},
     width = 460 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 400 - margin.top - margin.bottom;
 
 
 
-let svg = d3.select('#my_dataviz')
-  // .append('svg')
-  //   .attr("width", 500)
-  //   .attr("height", 500)
-  // .append("g")
-  //   .attr("transform",
-  //         "translate(" + 15 + "," + 20 + ")");
+let svg = d3.select('#lollipopChart')
+
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -67,11 +62,23 @@ let svg = d3.select('#my_dataviz')
         "translate(" + margin.left + "," + margin.top + ")");
 
 
-  d3.json("https://launchlibrary.net/1.4/launch/next/10", function(data) {
+  d3.json("https://launchlibrary.net/1.4/launch/next/50", function(data) {
+    let popChartObj = {};
+    let arrayReturn = [];
+      data.launches.forEach(indiv => (
+        popChartObj[indiv.location.countryCode] == undefined ? popChartObj[indiv.location.countryCode] = 0 : popChartObj[indiv.location.countryCode] += 1
+      ));
+      for (const item in popChartObj) {
+        arrayReturn.push([item, popChartObj[item]])
+      }
+    console.log(popChartObj);
+    console.log(arrayReturn);
+      //REFACTOR ABOVE CODE
     
     let x = d3.scaleBand()
-      .range([0, width])
-      .domain(data.launches.map(function(d) { return d.location.countryCode; }))
+      .range([0, width]) //Max number rounded up 
+      // .domain(Object.keys(popChartObj).map(function(d) { return d; }))
+      .domain(arrayReturn.map(function(d) { return d[0]; }))
       .padding(1)
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -81,30 +88,50 @@ let svg = d3.select('#my_dataviz')
         .style("text-anchor", "end");
 
     let y = d3.scaleLinear()
-      .domain([0, 13000])
+      .domain([0, 100])
       .range([ height, 0]);
     svg.append("g")
       .call(d3.axisLeft(y));
 
+
+
     svg.selectAll("myline")
-      .data(data)
+      .data(arrayReturn)
       .enter()
       .append("line")
-        .attr("x1", function(d) { return x(d.location.countryCode); })
-        .attr("x2", function(d) { return x(d.location.countryCode); })
-        // .attr("y1", function(d) { return y(1); })
+        // .attr("x1", function(d) { return x(Object.keys(popChartObj)); }) //starting point
+        // .attr("x2", function(d) { return x(Object.keys(popChartObj)); }) //ending point
+        // .attr("y1", function(d) { return y(popChartObj[d.countryCode]); })
+        .attr("x1", function(d) { 
+        
+          return x(d[0]); 
+          
+          }) //starting point
+        .attr("x2", function(d) { return x(d[0]); }) //ending point
+        .attr("y1", function(d) { return y(d[1]); })
         .attr("y2", y(0))
         .attr("stroke", "grey")
 
-        svg.selectAll("mycircle")
-        .data(data)
-        .enter()
-        .append("circle")
-          .attr("cx", function(d) { return x(d.Country); })
-          .attr("cy", function(d) { return y(d.Value); })
-          .attr("r", "4")
-          .style("fill", "#69b3a2")
-          .attr("stroke", "black")
+    svg.selectAll("mycircle")
+      .data(arrayReturn)
+      .enter()
+      .append("circle")
+        .attr("cx", function(d) { 
+          console.log(d)
+          debugger
+          return x(d.countryCode); 
+          
+          })
+        .attr("cy", function(d) { 
+          console.log(d);
+          debugger;
+          
+          return y(popChartObj[d.countryCode]); 
+          
+          })
+        .attr("r", "4")
+        .style("fill", "#69b3a2")
+        .attr("stroke", "black")
       })
 
 
