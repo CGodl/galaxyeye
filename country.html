@@ -41,35 +41,39 @@
     <div id='stars-4'></div>
   </section>
 
-  <div id='lollipopChart'></div>
+  <div id='lollipopChartCountry'></div>
 
 
   <script>
 
 let margin = {top: 10, right: 30, bottom: 90, left: 40},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 1000 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 
 
-let svg = d3.select('#lollipopChart')
+let svg = d3.select('#lollipopChartCountry')
 
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
+        "translate(" + margin.left + "," + margin.top + ")")
+    .style('color', 'white');
 
 
-  d3.json("https://launchlibrary.net/1.4/launch/next/50", function(data) {
+  d3.json("https://launchlibrary.net/1.4/launch/next/1000", function(apiData) {
+    debugger
     let popChartObj = {};
     let arrayReturn = [];
-      data.launches.forEach(indiv => (
+      apiData.launches.forEach(indiv => (
         popChartObj[indiv.location.countryCode] == undefined ? popChartObj[indiv.location.countryCode] = 0 : popChartObj[indiv.location.countryCode] += 1
       ));
       for (const item in popChartObj) {
-        arrayReturn.push([item, popChartObj[item]])
+        if (popChartObj[item] > 0) {
+          arrayReturn.push([item, popChartObj[item]])
+        }
       }
     console.log(popChartObj);
     console.log(arrayReturn);
@@ -79,13 +83,20 @@ let svg = d3.select('#lollipopChart')
       .range([0, width]) //Max number rounded up 
       // .domain(Object.keys(popChartObj).map(function(d) { return d; }))
       .domain(arrayReturn.map(function(d) { return d[0]; }))
+      
+      
+      
       .padding(1)
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x))
+      // .attr("stroke", "#69b3a2")
       .selectAll("text")
         .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end");
+        // .style("fill", "#69b3a2")
+        
+        
 
     let y = d3.scaleLinear()
       .domain([0, 100])
@@ -95,7 +106,7 @@ let svg = d3.select('#lollipopChart')
 
 
 
-    svg.selectAll("myline")
+    svg.selectAll("dataStick")
       .data(arrayReturn)
       .enter()
       .append("line")
@@ -106,7 +117,7 @@ let svg = d3.select('#lollipopChart')
         .attr("stroke", "grey")
 
 
-    svg.selectAll("mycircle")
+    svg.selectAll("dataCircle")
       .data(arrayReturn)
       .enter()
       .append("circle")
@@ -116,12 +127,11 @@ let svg = d3.select('#lollipopChart')
         .attr("r", "4")
         .style("fill", "#69b3a2")
         .attr("stroke", "black")
+
+
+    svg.selectAll()
         
       })
-
-
-
-
 
   </script>
   
