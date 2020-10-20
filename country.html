@@ -99,39 +99,24 @@ let svg = d3.select('#lollipopChart')
       .data(arrayReturn)
       .enter()
       .append("line")
-        // .attr("x1", function(d) { return x(Object.keys(popChartObj)); }) //starting point
-        // .attr("x2", function(d) { return x(Object.keys(popChartObj)); }) //ending point
-        // .attr("y1", function(d) { return y(popChartObj[d.countryCode]); })
-        .attr("x1", function(d) { 
-        
-          return x(d[0]); 
-          
-          }) //starting point
-        .attr("x2", function(d) { return x(d[0]); }) //ending point
-        .attr("y1", function(d) { return y(d[1]); })
+        .attr("x1", function(countryArray) { return x(countryArray[0]); }) //starting point
+        .attr("x2", function(countryArray) { return x(countryArray[0]); }) //ending point
+        .attr("y1", function(countryArray) { return y(countryArray[1]); })
         .attr("y2", y(0))
         .attr("stroke", "grey")
+
 
     svg.selectAll("mycircle")
       .data(arrayReturn)
       .enter()
       .append("circle")
-        .attr("cx", function(d) { 
-          console.log(d)
-          debugger
-          return x(d.countryCode); 
-          
-          })
-        .attr("cy", function(d) { 
-          console.log(d);
-          debugger;
-          
-          return y(popChartObj[d.countryCode]); 
-          
-          })
+        .attr("class", 'circle-test')
+        .attr("cx", function(countryArray) { return x(countryArray[0]); })
+        .attr("cy", function(countryArray) { return y(countryArray[1]); })
         .attr("r", "4")
         .style("fill", "#69b3a2")
         .attr("stroke", "black")
+        
       })
 
 
