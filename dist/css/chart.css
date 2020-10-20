@@ -1,0 +1,18 @@
+/* .piechart-countries {
+  height: 500px;
+  width: 500px;
+
+} */
+
+
+#lollipopChartCountry {
+  
+  background-color: rgba(255,255,255,0.5);
+  width: 1000px;
+}
+
+#lollipopChartFamily {
+  
+  background-color: rgba(255,255,255,0.5);
+  width: 1000px;
+}

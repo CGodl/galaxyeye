@@ -1,7 +1,7 @@
 import './styles/index.scss';
 import './scripts/card';
 import './scripts/piechart';
-
+import './scripts/chart';
 
 
 
