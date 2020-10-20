@@ -27,6 +27,13 @@
   margin-left: 35px;
 }
 
+.header-links {
+  all: unset;
+  color: white;
+  cursor: pointer;
+
+}
+
 
 footer {
   position: fixed;
