@@ -43,7 +43,12 @@ const rocketCollection = () => {
     .then(() => rocketCard(rocketArr))
 }
 
-if (window.location.pathname=='/' && (window.location.pathname!='/family.html' || window.location.pathname!='/country.html')) {
+if ((window.location.pathname=='/' || window.location.pathname=='/index.html') && (window.location.pathname!='/family.html' || window.location.pathname!='/country.html')) {
+  rocketCollection()
+}
+
+console.log(window.location.pathname)
+if ((window.location.pathname=='/galaxyeye' || window.location.pathname=='/') && (window.location.pathname!='/galaxyeye/family.html' || window.location.pathname!='/galaxyeye/country.html')) {
   rocketCollection()
 }
 
