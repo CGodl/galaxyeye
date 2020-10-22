@@ -15,7 +15,7 @@ const rocketCard = (array) => {
         </br>
         <p>Upcoming Mission Description:</p>
         <p class='card-desc'>${indiv.description}</p>
-        </div>
+      </div>
     </li>
     `
   })
