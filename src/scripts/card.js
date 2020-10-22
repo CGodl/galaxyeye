@@ -40,7 +40,7 @@ const rocketCollection = () => {
     .then(() => rocketCard(rocketArr))
 }
 
-if (window.location.pathname=='/') {
+if (window.location.pathname=='/' ) {
   rocketCollection()
 }
 
