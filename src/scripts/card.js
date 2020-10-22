@@ -42,5 +42,6 @@ const rocketCollection = () => {
 
 if (window.location.pathname=='/' ) {
   rocketCollection()
+  console.log('Should be updated')
 }
 
