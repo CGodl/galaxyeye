@@ -49,8 +49,7 @@ if ((window.location.pathname=='/' || window.location.pathname=='/index.html') &
   rocketCollection()
 }
 
-console.log(window.location.pathname)
-if ((window.location.pathname=='/galaxyeye/' || window.location.pathname=='/') && (window.location.pathname!='/galaxyeye/family.html' || window.location.pathname!='/galaxyeye/country.html')) {
+if ((window.location.pathname=='/galaxyeye/' || window.location.pathname=='/galaxyeye/.index.html') && (window.location.pathname!='/galaxyeye/family.html' || window.location.pathname!='/galaxyeye/country.html')) {
   rocketCollection()
 }
 
