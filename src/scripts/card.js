@@ -8,11 +8,14 @@ const rocketCard = (array) => {
     return `<li class='rocket-card'>
       <img src="${indiv.rocketPhoto}" />
       <h2>${indiv.rocketName}</h2>
-  
-      <p> Launch Date: ${indiv.launchDate}</p>
-      <p>Launch Location: ${indiv.location} </p>
-      <p>Upcoming Mission Description:</p>
-      <p class='card-desc'>${indiv.description}</p>
+      <div class='card-body'>
+        <p> Launch Date: ${indiv.launchDate}</p>
+        </br>
+        <p>Launch Location: ${indiv.location} </p>
+        </br>
+        <p>Upcoming Mission Description:</p>
+        <p class='card-desc'>${indiv.description}</p>
+        </div>
     </li>
     `
   })
@@ -40,8 +43,7 @@ const rocketCollection = () => {
     .then(() => rocketCard(rocketArr))
 }
 
-if (window.location.pathname=='/' ) {
+if (window.location.pathname=='/' && (window.location.pathname!='/family.html' || window.location.pathname!='/country.html')) {
   rocketCollection()
-  console.log('Should be updated')
 }
 
