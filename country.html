@@ -15,7 +15,11 @@
   <script src="./dist/main.css"></script>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
+  <script>
+    $(function(){
+        $('#header').load('header.html');
+        });
+  </script>
   <script>
     $(function(){
         $('#footer').load('footer.html');
@@ -25,23 +29,9 @@
 
 <title>GalaxyEye</title>  
 </head>
-<header>
-  <div class='sticky-header'>
-    <ul>
-      <li><a class='header-links' href="index.html">Home</a></li>
-      <li>
-        <ul class= 'org-data-type'>Organize Data:
-          <li><a class='header-links' href="country.html">By Country</a></li>
-          <li><a class='header-links' href="family.html">By Rocket Family</a></li>
-        </ul>
-      </li>
-      <li>By Carl Godlewski</li>
-      <!-- <li>Past Launches</li> -->
-    </ul>
-  </div>
-</header>
-
+<div id='header'></div>
 <body>
+  
   <section class='star-wrap'>
     <div id='stars-1'></div>
     <div id='stars-2'></div>
