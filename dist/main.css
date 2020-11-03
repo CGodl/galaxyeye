@@ -56,11 +56,39 @@ table {
   margin-bottom: 35%;
 }
 
+
 .galaxyeye-title {
-  font-size: 60px;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
   margin-bottom: 15px;
+  animation: typing 4s steps(40, end);
+
+  font-size: 60px;
+  padding-bottom: 10px;
   letter-spacing: 10px;
   text-shadow: 1px 1px #C6C6C6;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.title-subheading {
+  animation: fadeIn ease 5s;
+}
+
+.title-subheading ~ .title-subheading {
+  opacity: 0;
+  animation: fadeIn ease 5s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
 }
 
 
