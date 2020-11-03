@@ -31,7 +31,7 @@
 
 .title-subheading ~ .title-subheading {
   opacity: 0;
-  animation: fadeIn ease 3s;
+  animation: fadeIn ease 5s;
   animation-delay: 2s;
   animation-fill-mode: forwards;
 }
