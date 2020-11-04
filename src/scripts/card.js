@@ -9,11 +9,14 @@ const rocketCard = (array) => {
       <img src="${indiv.rocketPhoto}" />
       <h2>${indiv.rocketName}</h2>
       <div class='card-body'>
-        <p> Launch Date: ${indiv.launchDate}</p>
+        <p class='card-subtitle'> Launch Date:</p>
+          <p>${indiv.launchDate}</p>
         </br>
-        <p>Launch Location: ${indiv.location} </p>
+        <p class='card-subtitle'>Launch Location: </p>
+          </br>
+          <p> ${indiv.location} </p>
         </br>
-        <p>Upcoming Mission Description:</p>
+        <p class='card-subtitle'>Upcoming Mission Description:</p>
         <p class='card-desc'>${indiv.description}</p>
       </div>
     </li>
