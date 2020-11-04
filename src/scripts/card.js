@@ -13,7 +13,6 @@ const rocketCard = (array) => {
           <p>${indiv.launchDate}</p>
         </br>
         <p class='card-subtitle'>Launch Location: </p>
-          </br>
           <p> ${indiv.location} </p>
         </br>
         <p class='card-subtitle'>Upcoming Mission Description:</p>
