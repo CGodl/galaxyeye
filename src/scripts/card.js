@@ -28,22 +28,42 @@ const rocketCard = (array) => {
 
 
 
+// const rocketCollection = () => {
+//   let rocketArr = [];
+//   fetch('https://launchlibrary.net/1.4/launch/next/12')
+//     .then(response => response.json())
+//     .then(array => array.launches.forEach(indiv => (
+//       rocketArr.push({rocketName: indiv.name, 
+//       launchDate: indiv.windowstart, 
+//       rocketPhoto: indiv.rocket.imageURL, 
+//       locName: indiv.location.name,
+//       description: indiv.missions[0] ? indiv.missions[0].description : 'No description available' ,
+//       location: indiv.location.name
+
+//       })
+//     )))
+//     .then(() => rocketCard(rocketArr))
+//     .then(() => newAPITest())
+// }
+
 const rocketCollection = () => {
   let rocketArr = [];
-  fetch('https://launchlibrary.net/1.4/launch/next/12')
-    .then(response => response.json())
-    .then(array => array.launches.forEach(indiv => (
-      rocketArr.push({rocketName: indiv.name, 
-      launchDate: indiv.windowstart, 
-      rocketPhoto: indiv.rocket.imageURL, 
-      locName: indiv.location.name,
-      description: indiv.missions[0] ? indiv.missions[0].description : 'No description available' ,
-      location: indiv.location.name
 
-      })
-    )))
-    .then(() => rocketCard(rocketArr))
-}
+  fetch('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=12')
+    .then(response => response.json())
+    // .then(object => console.log(object.results))
+    .then(response => response.results.forEach(indiv => (
+      rocketArr.push({
+        rocketName: indiv.name,
+        launchDate: indiv.window_start,
+        rocketPhoto: indiv.image, 
+        location: indiv.pad.location.name,
+        description: indiv.mission.description ? indiv.mission.description : 'No description available'
+      }))))
+      .then(() => rocketCard(rocketArr))
+};
+
+
 
 
 
