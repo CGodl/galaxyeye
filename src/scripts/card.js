@@ -9,11 +9,13 @@ const rocketCard = (array) => {
       <img src="${indiv.rocketPhoto}" />
       <h2>${indiv.rocketName}</h2>
       <div class='card-body'>
-        <p> Launch Date: ${indiv.launchDate}</p>
+        <p class='card-subtitle'> Launch Date:</p>
+          <p>${indiv.launchDate}</p>
         </br>
-        <p>Launch Location: ${indiv.location} </p>
+        <p class='card-subtitle'>Launch Location: </p>
+          <p> ${indiv.location} </p>
         </br>
-        <p>Upcoming Mission Description:</p>
+        <p class='card-subtitle'>Upcoming Mission Description:</p>
         <p class='card-desc'>${indiv.description}</p>
       </div>
     </li>
@@ -26,22 +28,70 @@ const rocketCard = (array) => {
 
 
 
+// const rocketCollection = () => {
+//   let rocketArr = [];
+//   fetch('https://launchlibrary.net/1.4/launch/next/12')
+//     .then(response => response.json())
+//     .then(array => array.launches.forEach(indiv => (
+//       rocketArr.push({rocketName: indiv.name, 
+//       launchDate: indiv.windowstart, 
+//       rocketPhoto: indiv.rocket.imageURL, 
+//       locName: indiv.location.name,
+//       description: indiv.missions[0] ? indiv.missions[0].description : 'No description available' ,
+//       location: indiv.location.name
+
+//       })
+//     )))
+//     .then(() => rocketCard(rocketArr))
+//     .then(() => newAPITest())
+// }
+
 const rocketCollection = () => {
   let rocketArr = [];
-  fetch('https://launchlibrary.net/1.4/launch/next/12')
-    .then(response => response.json())
-    .then(array => array.launches.forEach(indiv => (
-      rocketArr.push({rocketName: indiv.name, 
-      launchDate: indiv.windowstart, 
-      rocketPhoto: indiv.rocket.imageURL, 
-      locName: indiv.location.name,
-      description: indiv.missions[0] ? indiv.missions[0].description : 'No description available' ,
-      location: indiv.location.name
+  // let APIVariable = ['https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=200']
+    // while (true) {
+      // fetch('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=1')
+      // .then(response => response.json())
+      // .then(object => console.log(object))
+      // .then(response => response.results.forEach(indiv => (
+      //   rocketArr.push({
+      //     rocketName: indiv.name,
+      //     launchDate: indiv.window_start,
+      //     rocketPhoto: indiv.image, 
+      //     location: indiv.pad.location.name,
+      //     description: indiv.mission.description ? indiv.mission.description : 'No description available'
+      //   }))))
+      //   debugger;
 
-      })
-    )))
-    .then(() => rocketCard(rocketArr))
-}
+      // if (APIVariable.next === null) {
+      //   break;
+      // }
+      // APIVariable = APIVariable.next;
+    // }
+    
+
+      // fetch('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=200')
+      //   .then(response => response.json())
+      //   .then(object => fetch(object.next))
+      // // fetch(object.next)
+      // .then(response => response.json())
+      // .then(object => console.log(object))
+
+  fetch('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=12')
+    .then(response => response.json())
+    // .then(object => console.log(object.results))
+    .then(response => response.results.forEach(indiv => (
+      rocketArr.push({
+        rocketName: indiv.name,
+        launchDate: indiv.window_start,
+        rocketPhoto: indiv.image, 
+        location: indiv.pad.location.name,
+        description: indiv.mission.description ? indiv.mission.description : 'No description available'
+      }))))
+      .then(() => rocketCard(rocketArr))
+};
+
+
 
 
 

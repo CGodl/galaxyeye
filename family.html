@@ -43,15 +43,11 @@
 
 
   <script>
-
     let margin = {top: 10, right: 30, bottom: 90, left: 40},
         width = 1000 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
     
-    
-    
-    let svg = d3.select('#lollipopChartFamily')
-    
+    let svg = d3.select('#lollipopChartFamily')    
       .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -61,8 +57,7 @@
         .style('color', 'white');
     
     
-      d3.json("https://launchlibrary.net/1.4/launch/next/1000", function(apiData) {
-      
+      d3.json("https://launchlibrary.net/1.4/launch/next/1000", function(apiData) {  
         let popChartObj = {};
         let arrayReturn = [];
           apiData.launches.forEach(indiv => (
@@ -77,9 +72,6 @@
         let x = d3.scaleBand()
           .range([0, width]) //Max number rounded up 
           .domain(arrayReturn.map(function(d) { return d[0]; }))
-          
-          
-          
           .padding(1)
         svg.append("g")
           .attr("transform", "translate(0," + height + ")")
@@ -120,11 +112,7 @@
             .attr("cy", function(countryArray) { return y(countryArray[1]); })
             .attr("r", "4")
             .style("fill", "#69b3a2")
-            .attr("stroke", "black")
-    
-    
-        // svg.selectAll()
-            
+            .attr("stroke", "black")          
           })
     
     
@@ -132,9 +120,7 @@
     
     
   </script>
-      
     </body>
-    
     <footer>
       <div class='links-container'>
         <a href='https://github.com/CGodl'>Github</a>
