@@ -59,12 +59,13 @@
         .style('color', 'white');
 
 
-    d3.json("https://launchlibrary.net/1.4/launch/next/1000", function(apiData) {
+    d3.json('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) {
       let popChartObj = {};
       let arrayReturn = [];
-        apiData.launches.forEach(indiv => (
-          popChartObj[indiv.location.countryCode] == undefined ? popChartObj[indiv.location.countryCode] = 0 : popChartObj[indiv.location.countryCode] += 1
-        ));
+        apiData.results.forEach(indiv => {
+          popChartObj[indiv.pad.location.country_code] == undefined ? popChartObj[indiv.pad.location.country_code] = 0 : popChartObj[indiv.pad.location.country_code] += 1
+        });
+
         for (const item in popChartObj) {
           if (popChartObj[item] > 0) {
             arrayReturn.push([item, popChartObj[item]])

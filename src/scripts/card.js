@@ -48,45 +48,16 @@ const rocketCard = (array) => {
 
 const rocketCollection = () => {
   let rocketArr = [];
-  // let APIVariable = ['https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=200']
-    // while (true) {
-      // fetch('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=1')
-      // .then(response => response.json())
-      // .then(object => console.log(object))
-      // .then(response => response.results.forEach(indiv => (
-      //   rocketArr.push({
-      //     rocketName: indiv.name,
-      //     launchDate: indiv.window_start,
-      //     rocketPhoto: indiv.image, 
-      //     location: indiv.pad.location.name,
-      //     description: indiv.mission.description ? indiv.mission.description : 'No description available'
-      //   }))))
-      //   debugger;
-
-      // if (APIVariable.next === null) {
-      //   break;
-      // }
-      // APIVariable = APIVariable.next;
-    // }
-    
-
-      // fetch('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=200')
-      //   .then(response => response.json())
-      //   .then(object => fetch(object.next))
-      // // fetch(object.next)
-      // .then(response => response.json())
-      // .then(object => console.log(object))
-
+ 
   fetch('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=12')
     .then(response => response.json())
-    // .then(object => console.log(object.results))
     .then(response => response.results.forEach(indiv => (
       rocketArr.push({
         rocketName: indiv.name,
         launchDate: indiv.window_start,
         rocketPhoto: indiv.image, 
         location: indiv.pad.location.name,
-        description: indiv.mission.description ? indiv.mission.description : 'No description available'
+        description: indiv.mission ? indiv.mission.description : 'No description available'
       }))))
       .then(() => rocketCard(rocketArr))
 };
