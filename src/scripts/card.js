@@ -31,7 +31,8 @@ const rocketCollection = () => {
   
   let rocketArr = [];
  
-  fetch('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=12')
+  // fetch('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=12') //Live Data subject to limits
+  fetch('https://lldev.thespacedevs.com/2.0.0/launch/upcoming/?limit=12') //Fetch stale data for development
     .then(response => response.json())
     .then(response => response.results.forEach(indiv => (
       rocketArr.push({
