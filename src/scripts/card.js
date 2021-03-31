@@ -1,12 +1,14 @@
-import { myTimer } from './timer';
+import { countdowns, initializeClock } from './timer';
 
 
-const rocketCard = (array) => {
-
-  const cardReturn = array.map(indiv => {
+const initializeDOM = (array) => {
+  const app = document.getElementById('appTest');
+  
+  array.forEach((indiv, index) => {
+    const countdownId = `countdownId-${index}`;
   
 
-    return `<li class='rocket-card'>
+    const rocketCard =  `<li class='rocket-card'>
       <img src="${indiv.rocketPhoto}" />
       <h2>${indiv.rocketName}</h2>
       <div class='card-body'>
@@ -15,16 +17,18 @@ const rocketCard = (array) => {
         </br>
         <p class='card-subtitle'>Launch Location: </p>
           <p> ${indiv.location} </p>
+          <p id=${countdownId}></p>
         </br>
         <p class='card-subtitle'>Upcoming Mission Description:</p>
         <p class='card-desc'>${indiv.description}</p>
       </div>
     </li>
-    `
-  })
-    document
-      .getElementById('appTest')
-      .innerHTML = cardReturn.join('')
+    `;
+    app.innerHTML += rocketCard;
+    const rocketClock = initializeClock(countdownId, indiv.launchDate, index);
+  
+    countdowns.push(rocketClock);
+  });
 }
 
 const rocketCollection = () => {
@@ -42,15 +46,19 @@ const rocketCollection = () => {
         location: indiv.pad.location.name,
         description: indiv.mission ? indiv.mission.description : 'No description available'
       }))))
-      .then(() => rocketCard(rocketArr))
+      .then(() => initializeDOM(rocketArr));
 };
 
 
+
+
 if ((window.location.pathname=='/' || window.location.pathname=='/index.html') && (window.location.pathname!='/family.html' || window.location.pathname!='/country.html')) {
-  rocketCollection()
+  rocketCollection();
+  countdowns.forEach(countdown => countdown.startInterval());
 }
 
 if ((window.location.pathname=='/galaxyeye/' || window.location.pathname=='/galaxyeye/index.html') && (window.location.pathname!='/galaxyeye/family.html' || window.location.pathname!='/galaxyeye/country.html')) {
-  rocketCollection()
+  rocketCollection();
+  countdowns.forEach(countdown => countdown.startInterval());
 }
 

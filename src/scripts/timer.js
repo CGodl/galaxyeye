@@ -1,5 +1,6 @@
+let countdowns = [];
 
-export const myTimer = (deadline) => {
+const myTimer = (deadline) => {
     let theDeadline = new Date(deadline).getTime();
     let now = new Date().getTime();
     let timeleft = theDeadline - now;
@@ -10,6 +11,27 @@ export const myTimer = (deadline) => {
    
     return {days, hours, minutes, seconds};
   };
+
+
+const initializeClock = (id, endtime, index) => {
+  debugger;
+  return {
+    startInterval: setInterval(() => {
+      const clock = document.getElementById(id);
+      const t = myTimer(endtime);
+      clock.innerHTML = 'days: ' + t.days + '<br>' +
+        'hours: ' + t.hours + '<br>' +
+        'minutes: ' + t.minutes + '<br>' +
+        'seconds: ' + t.seconds;
+      if (t.total <= 0) {
+        clearInterval(countdowns[index].startInterval);
+      }
+    }, 1000),
+  };
+};
+
+export {countdowns, initializeClock};
+
 
 
 
