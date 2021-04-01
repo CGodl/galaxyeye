@@ -10,7 +10,7 @@ const myTimer = (deadline) => {
     let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
    
     return {days, hours, minutes, seconds};
-  };
+};
 
 
 const initializeClock = (id, endtime, index) => {
@@ -19,10 +19,8 @@ const initializeClock = (id, endtime, index) => {
     startInterval: setInterval(() => {
       const clock = document.getElementById(id);
       const t = myTimer(endtime);
-      clock.innerHTML = 'days: ' + t.days + '<br>' +
-        'hours: ' + t.hours + '<br>' +
-        'minutes: ' + t.minutes + '<br>' +
-        'seconds: ' + t.seconds;
+      clock.innerHTML = `T-  D: ${t.days} | H: ${t.hours} hours | M: ${t.minutes} | S: ${t.seconds}`
+      
       if (t.total <= 0) {
         clearInterval(countdowns[index].startInterval);
       }

@@ -17,6 +17,8 @@ const initializeDOM = (array) => {
         </br>
         <p class='card-subtitle'>Launch Location: </p>
           <p> ${indiv.location} </p>
+        </br>
+        <p class='card-subtitle'>Countdown: </p>
           <p id=${countdownId}></p>
         </br>
         <p class='card-subtitle'>Upcoming Mission Description:</p>
