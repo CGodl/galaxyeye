@@ -19,7 +19,7 @@ const initializeClock = (id, endtime, index) => {
     startInterval: setInterval(() => {
       const clock = document.getElementById(id);
       const t = myTimer(endtime);
-      clock.innerHTML = `T-  D: ${t.days} | H: ${t.hours} hours | M: ${t.minutes} | S: ${t.seconds}`
+      clock.innerHTML = `T-  D: ${t.days} | H: ${t.hours} | M: ${t.minutes} | S: ${t.seconds}`
       
       if (t.total <= 0) {
         clearInterval(countdowns[index].startInterval);
