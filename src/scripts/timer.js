@@ -8,9 +8,8 @@ const myTimer = (deadline) => {
     let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
-    let total = 
    
-    return {days, hours, minutes, seconds};
+    return {days, hours, minutes, seconds, timeleft};
 };
 
 const initializeClock = (id, endtime, index) => {
@@ -23,6 +22,7 @@ const initializeClock = (id, endtime, index) => {
       
       if (t.timeleft <= 0) {
         clearInterval(countdowns[index].startInterval);
+        clock.innerHTML = "LIFTOFF"
       };
     }, 1000),
   };
