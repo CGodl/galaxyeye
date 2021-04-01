@@ -8,22 +8,22 @@ const myTimer = (deadline) => {
     let hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+    let total = 
    
     return {days, hours, minutes, seconds};
 };
 
-
 const initializeClock = (id, endtime, index) => {
-  debugger;
+
   return {
     startInterval: setInterval(() => {
       const clock = document.getElementById(id);
       const t = myTimer(endtime);
       clock.innerHTML = `T-  D: ${t.days} | H: ${t.hours} | M: ${t.minutes} | S: ${t.seconds}`
       
-      if (t.total <= 0) {
+      if (t.timeleft <= 0) {
         clearInterval(countdowns[index].startInterval);
-      }
+      };
     }, 1000),
   };
 };
