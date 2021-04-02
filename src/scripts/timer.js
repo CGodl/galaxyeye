@@ -18,12 +18,15 @@ const initializeClock = (id, endtime, index) => {
     startInterval: setInterval(() => {
       const clock = document.getElementById(id);
       const t = myTimer(endtime);
-      clock.innerHTML = `T-  D: ${t.days} | H: ${t.hours} | M: ${t.minutes} | S: ${t.seconds}`
       
-      if (t.timeleft <= 0) {
+      if (t.timeleft < 86400000) {
+        clock.innerHTML = `<div class='timer-below-24Hr'> T-  D: ${t.days} | H: ${t.hours} | M: ${t.minutes} | S: ${t.seconds} </div>`;
+      } else if (t.timeleft <= 0) {
         clearInterval(countdowns[index].startInterval);
-        clock.innerHTML = "LIFTOFF"
-      };
+        clock.innerHTML = "<p class='timer-below-24Hr'> LIFTOFF </p>"
+      } else {
+        clock.innerHTML = `<div> T-  D: ${t.days} | H: ${t.hours} | M: ${t.minutes} | S: ${t.seconds} </div>`;
+      }
     }, 1000),
   };
 };
