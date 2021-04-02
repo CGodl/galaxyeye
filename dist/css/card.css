@@ -58,3 +58,19 @@
   padding: 15px;
 
 }
+
+
+
+.timer-below-24Hr {
+  color: red;
+  animation: blinker 2s linear infinite;
+  text-emphasis: bold;
+  font-size: 20px;
+
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
