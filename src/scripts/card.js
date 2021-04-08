@@ -7,7 +7,6 @@ const initializeDOM = (array) => {
   
   array.forEach((indiv, index) => {
     const countdownId = `countdownId-${index}`;
-    debugger;
   
 
     const rocketCard =  `<li class='rocket-card'>

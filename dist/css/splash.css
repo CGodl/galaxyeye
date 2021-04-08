@@ -36,6 +36,21 @@
   animation-fill-mode: forwards;
 }
 
+.scroll-btn {
+  opacity: 0;
+  animation: fadeIn ease 5s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+  color: white;
+
+  border: 2px solid white;
+  background-color: transparent;
+  font-family: 'Orbitron', sans-serif;
+  text-emphasis: bold;
+  padding: 8px;
+
+}
+
 @keyframes fadeIn {
   from {opacity:0;}
   to {opacity:1;}
