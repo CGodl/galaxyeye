@@ -1,4 +1,5 @@
 import { countdowns, initializeClock } from './timer';
+import NoImageAvailable from '../../images/no_image_available.png';
 
 
 const initializeDOM = (array) => {
@@ -44,7 +45,7 @@ const rocketCollection = () => {
       rocketArr.push({
         rocketName: indiv.name,
         launchDate: indiv.window_start,
-        rocketPhoto: indiv.image, 
+        rocketPhoto: indiv.image ? indiv.image : NoImageAvailable, 
         location: indiv.pad.location.name,
         description: indiv.mission ? indiv.mission.description : 'No description available'
       }))))
