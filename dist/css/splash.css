@@ -12,7 +12,7 @@
   white-space: nowrap;
   margin: 0 auto;
   margin-bottom: 15px;
-  animation: typing 4s steps(40, end);
+  animation: typing 6s steps(40, end);
 
   font-size: 60px;
   padding-bottom: 10px;
