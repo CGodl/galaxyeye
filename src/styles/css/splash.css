@@ -1,0 +1,59 @@
+.main-title {
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  color: white;
+  margin-top: 20%;
+  margin-bottom: 35%;
+}
+
+
+.galaxyeye-title {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  animation: typing 6s steps(40, end);
+
+  font-size: 60px;
+  padding-bottom: 10px;
+  letter-spacing: 10px;
+  text-shadow: 1px 1px #C6C6C6;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.title-subheading {
+  animation: fadeIn ease 5s;
+}
+
+.title-subheading ~ .title-subheading {
+  opacity: 0;
+  animation: fadeIn ease 5s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+
+.scroll-btn {
+  opacity: 0;
+  animation: fadeIn ease 5s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+  color: white;
+
+  border: 2px solid white;
+  background-color: transparent;
+  font-family: 'Orbitron', sans-serif;
+  text-emphasis: bold;
+  padding: 8px;
+
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+
