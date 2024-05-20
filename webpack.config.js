@@ -4,23 +4,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const listOfHTMLFiles = [
   {
     filename: 'index.html',
-    template: 'src/index.html',
+    template: 'index.html',
   },
 	{
 		filename: 'header.html',
-		template: './src/header.html',
+		template: 'header.html',
 	},
   {
     filename: 'family.html',
-    template: './src/family.html',
+    template: 'family.html',
   },
   {
     filename: 'country.html',
-    template: './src/country.html',
+    template: 'country.html',
   },
   {
     filename: 'footer.html',
-    template: './src/footer.html',
+    template: 'footer.html',
   }
 ];
 
