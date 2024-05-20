@@ -118,7 +118,17 @@
           .attr("stroke", "black")
 
 
-        svg.selectAll()   
+                // Add text labels
+        svg.selectAll("dataLabel")
+          .data(arrayReturn)
+          .enter()
+          .append("text")
+            .attr("x", function(countryArray) { return x(countryArray[0]); })
+            .attr("y", function(countryArray) { return y(countryArray[1]) - 10; }) // Position above the lollipop head
+            .attr("text-anchor", "middle")
+            .text(function(countryArray) { return countryArray[1]; })
+            .style("fill", "black")
+            .style("font-size", "12px");
       })
   </script>
   
