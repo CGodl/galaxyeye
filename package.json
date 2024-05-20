@@ -4,6 +4,7 @@
   "description": "App for providing real-time data on upcoming rocket launches",
   "main": "index.js",
   "scripts": {
+    "start": "webpack serve --mode development",
     "clean": "rm dist/bundle.js",
     "build": "webpack",
     "build:dev": "webpack --mode development",
