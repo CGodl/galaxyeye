@@ -31,7 +31,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
-		filename: '[name].bundle.js',
+		filename: 'main.js',
 	},
 	plugins: [
     ...listOfHTMLFiles.map(template => new HtmlWebpackPlugin(template)),
