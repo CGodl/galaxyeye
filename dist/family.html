@@ -1,0 +1,88 @@
+<!doctype html><html lang="en" class="other-html"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="image" property="og:image" content="dist/images/galaxyeye-profile-photo.png"><link rel="stylesheet" href="src/styles/index.css"><link rel="stylesheet" href="src/styles/index.scss" type="text/scss"><link rel="stylesheet" href="dist/main.css"><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/><script src="https://d3js.org/d3.v4.js"></script><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><script src="./dist/main.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><script>$(function(){
+        $('#header').load('header.html');
+        });</script><script>$(function(){
+        $('#footer').load('footer.html');
+        });</script><title>GalaxyEye</title><script defer="defer" src="main.js"></script><link href="main.css" rel="stylesheet"></head><div id="header"></div><body><section class="star-wrap"><div id="stars-1"></div><div id="stars-2"></div><div id="stars-3"></div><div id="stars-4"></div></section><div id="lollipopChartFamily"></div><script>let margin = {top: 10, right: 30, bottom: 90, left: 40},
+        width = 1000 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+    
+    let svg = d3.select('#lollipopChartFamily')    
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")")
+        .style('color', 'white');
+    
+    
+      d3.json('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) {  
+        let popChartObj = {};
+        let arrayReturn = [];
+        apiData.results.forEach(indiv => {
+          popChartObj[indiv.rocket.configuration.family] == undefined ? popChartObj[indiv.rocket.configuration.family] = 0 : popChartObj[indiv.rocket.configuration.family] += 1
+        });
+
+        for (const item in popChartObj) {
+          if (popChartObj[item] > 0) {
+            arrayReturn.push([item, popChartObj[item]])
+          }
+        }
+        
+        let x = d3.scaleBand()
+          .range([0, width]) //Max number rounded up 
+          .domain(arrayReturn.map(function(d) { return d[0]; }))
+          .padding(1)
+        svg.append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x))
+          // .attr("stroke", "#69b3a2")
+          .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end");
+            // .style("fill", "#69b3a2")
+            
+            
+    
+        let y = d3.scaleLinear()
+          .domain([0, 100])
+          .range([ height, 0]);
+        svg.append("g")
+          .call(d3.axisLeft(y));
+    
+    
+    
+        svg.selectAll("dataStick")
+          .data(arrayReturn)
+          .enter()
+          .append("line")
+            .attr("x1", function(countryArray) { return x(countryArray[0]); }) //starting point
+            .attr("x2", function(countryArray) { return x(countryArray[0]); }) //ending point
+            .attr("y1", function(countryArray) { return y(countryArray[1]); })
+            .attr("y2", y(0))
+            .attr("stroke", "black")
+    
+    
+        svg.selectAll("dataCircle")
+          .data(arrayReturn)
+          .enter()
+          .append("circle")
+            .attr("class", 'circle-test')
+            .attr("cx", function(countryArray) { return x(countryArray[0]); })
+            .attr("cy", function(countryArray) { return y(countryArray[1]); })
+            .attr("r", "4")
+            .style("fill", "#69b3a2")
+            .attr("stroke", "black")
+            
+        // Add text labels
+        svg.selectAll("dataLabel")
+          .data(arrayReturn)
+          .enter()
+          .append("text")
+            .attr("x", function(countryArray) { return x(countryArray[0]); })
+            .attr("y", function(countryArray) { return y(countryArray[1]) - 10; }) // Position above the lollipop head
+            .attr("text-anchor", "middle")
+            .text(function(countryArray) { return countryArray[1]; })
+            .style("fill", "black")
+            .style("font-size", "12px");
+          })</script></body><footer><div class="links-container"><a href="https://github.com/CGodl">Github</a> <a href="https://www.linkedin.com/in/carl-godlewski-b64b0512/">Linkedin</a> <a href="">Personal Site</a></div></footer></html><div id="footer"></div>
