@@ -1,10 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 const listOfHTMLFiles = [
   {
     filename: 'index.html',
-    template: 'index.html',
   },
 	{
 		filename: 'header.html',
@@ -33,7 +34,10 @@ module.exports = {
 		filename: '[name].bundle.js',
 	},
 	plugins: [
-    ...listOfHTMLFiles.map(template => new HtmlWebpackPlugin(template))
+    ...listOfHTMLFiles.map(template => new HtmlWebpackPlugin(template)),
+	new MiniCssExtractPlugin({
+		filename: 'main.css'
+	})
 
   ],
 	mode: 'development',
@@ -57,8 +61,14 @@ module.exports = {
 			},
 			// CSS, PostCSS, and Sass
 			{
-				test: /\.(scss|css)$/,
-				use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+				test:  /\.s[ac]ss$/i, 
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader,
+					}, 
+					'css-loader', 
+					'postcss-loader', 
+					'sass-loader'],
 			},
 		],
 	},
