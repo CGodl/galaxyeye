@@ -1,28 +1,28 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const listOfHTMLFiles = [
-  {
-    filename: 'index.html',
-  },
+	{
+		filename: 'index.html',
+		template: 'index.html',
+	},
 	{
 		filename: 'header.html',
 		template: 'header.html',
 	},
-  {
-    filename: 'family.html',
-    template: 'family.html',
-  },
-  {
-    filename: 'country.html',
-    template: 'country.html',
-  },
-  {
-    filename: 'footer.html',
-    template: 'footer.html',
-  }
+	{
+		filename: 'family.html',
+		template: 'family.html',
+	},
+	{
+		filename: 'country.html',
+		template: 'country.html',
+	},
+	{
+		filename: 'footer.html',
+		template: 'footer.html',
+	},
 ];
 
 module.exports = {
@@ -34,12 +34,11 @@ module.exports = {
 		filename: 'main.js',
 	},
 	plugins: [
-    ...listOfHTMLFiles.map(template => new HtmlWebpackPlugin(template)),
-	new MiniCssExtractPlugin({
-		filename: 'main.css'
-	})
-
-  ],
+		...listOfHTMLFiles.map((template) => new HtmlWebpackPlugin(template)),
+		new MiniCssExtractPlugin({
+			filename: 'main.css',
+		}),
+	],
 	mode: 'development',
 	module: {
 		rules: [
@@ -61,14 +60,15 @@ module.exports = {
 			},
 			// CSS, PostCSS, and Sass
 			{
-				test:  /\.s[ac]ss$/i, 
+				test: /\.s[ac]ss$/i,
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader,
-					}, 
-					'css-loader', 
-					'postcss-loader', 
-					'sass-loader'],
+					},
+					'css-loader',
+					'postcss-loader',
+					'sass-loader',
+				],
 			},
 		],
 	},
