@@ -58,7 +58,8 @@
         .style('color', 'white');
 
 
-    d3.json('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) {
+    // d3.json('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) {
+    d3.json('https://lldev.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) { //dev
       let popChartObj = {};
       let arrayReturn = [];
         apiData.results.forEach(indiv => {
