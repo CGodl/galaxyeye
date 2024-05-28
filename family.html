@@ -61,7 +61,9 @@
         let popChartObj = {};
         let arrayReturn = [];
         apiData.results.forEach(indiv => {
-          popChartObj[indiv.rocket.configuration.family] == undefined ? popChartObj[indiv.rocket.configuration.family] = 0 : popChartObj[indiv.rocket.configuration.family] += 1
+          let rocketFamName = indiv.rocket.configuration.family === "" ? indiv.rocket.configuration.name : indiv.rocket.configuration.family
+
+          popChartObj[rocketFamName] == undefined ? popChartObj[rocketFamName] = 0 : popChartObj[rocketFamName] += 1
         });
 
         for (const item in popChartObj) {
