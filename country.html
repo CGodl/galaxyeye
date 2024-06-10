@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="src/styles/index.css" type="text/css">
   <link rel="stylesheet" href="src/styles/index.scss" type="text/scss">
   <link rel="stylesheet" href="dist/main.css" type="text/css">
-  <link rel='shortcut icon' type='image/x-icon' href='dist/images/favicon.ico' />
+  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
   <script src="https://d3js.org/d3.v4.js"></script>
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -37,7 +37,12 @@
     <div id='stars-4'></div>
   </section>
 
-  <div id='lollipopChartCountry'></div>
+  <div class="graph-container">
+    <h2 class="graph-title">Number of Rockets by Country</h2>
+    <div id='lollipopChartCountry'></div>
+  </div>
+
+
 
 
   <script>
@@ -58,7 +63,8 @@
         .style('color', 'white');
 
 
-    d3.json('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) {
+    // d3.json('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) {
+    d3.json('https://lldev.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) { //dev
       let popChartObj = {};
       let arrayReturn = [];
         apiData.results.forEach(indiv => {
@@ -118,7 +124,17 @@
           .attr("stroke", "black")
 
 
-        svg.selectAll()   
+                // Add text labels
+        svg.selectAll("dataLabel")
+          .data(arrayReturn)
+          .enter()
+          .append("text")
+            .attr("x", function(countryArray) { return x(countryArray[0]); })
+            .attr("y", function(countryArray) { return y(countryArray[1]) - 10; }) // Position above the lollipop head
+            .attr("text-anchor", "middle")
+            .text(function(countryArray) { return countryArray[1]; })
+            .style("fill", "black")
+            .style("font-size", "12px");
       })
   </script>
   

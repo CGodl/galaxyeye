@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="src/styles/index.css" type="text/css">
   <link rel="stylesheet" href="src/styles/index.scss" type="text/scss">
   <link rel="stylesheet" href="dist/main.css" type="text/css">
-  <link rel='shortcut icon' type='image/x-icon' href='dist/images/favicon.ico' />
+  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
   <script src="https://d3js.org/d3.v4.js"></script>
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -36,9 +36,13 @@
     <div id='stars-4'></div>
   </section>
 
+  <div class="graph-container">
+    <h2 class="graph-title">Number of Rockets by Family</h2>
+    <div id='lollipopChartFamily'></div>
+  </div>
 
 
-  <div id='lollipopChartFamily'></div>
+
 
 
   <script>
@@ -56,11 +60,14 @@
         .style('color', 'white');
     
     
-      d3.json('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) {  
+      // d3.json('https://ll.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) {  live
+      d3.json('https://lldev.thespacedevs.com/2.0.0/launch/upcoming/?limit=100', function(apiData) {  // dev
         let popChartObj = {};
         let arrayReturn = [];
         apiData.results.forEach(indiv => {
-          popChartObj[indiv.rocket.configuration.family] == undefined ? popChartObj[indiv.rocket.configuration.family] = 0 : popChartObj[indiv.rocket.configuration.family] += 1
+          let rocketFamName = indiv.rocket.configuration.family === "" ? indiv.rocket.configuration.name : indiv.rocket.configuration.family
+
+          popChartObj[rocketFamName] == undefined ? popChartObj[rocketFamName] = 0 : popChartObj[rocketFamName] += 1
         });
 
         for (const item in popChartObj) {
@@ -112,7 +119,19 @@
             .attr("cy", function(countryArray) { return y(countryArray[1]); })
             .attr("r", "4")
             .style("fill", "#69b3a2")
-            .attr("stroke", "black")          
+            .attr("stroke", "black")
+            
+        // Add text labels
+        svg.selectAll("dataLabel")
+          .data(arrayReturn)
+          .enter()
+          .append("text")
+            .attr("x", function(countryArray) { return x(countryArray[0]); })
+            .attr("y", function(countryArray) { return y(countryArray[1]) - 10; }) // Position above the lollipop head
+            .attr("text-anchor", "middle")
+            .text(function(countryArray) { return countryArray[1]; })
+            .style("fill", "black")
+            .style("font-size", "12px");
           })
     
     

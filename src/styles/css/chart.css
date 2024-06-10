@@ -1,0 +1,22 @@
+
+.graph-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graph-title {
+  color: white;
+  margin-bottom: 6px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+#lollipopChartCountry, #lollipopChartFamily {
+  background-color: rgba(255,255,255,0.5);
+  width: 1000px;
+  
+
+}
